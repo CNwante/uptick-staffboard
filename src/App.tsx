@@ -1,7 +1,9 @@
+import {EmployeesPage} from "./pages/EmployeesPage";
+
 function App() {
   return (
     <main>
-      <h1>Hello StaffBoard</h1>
+     <EmployeesPage />
     </main>
   );
 }
