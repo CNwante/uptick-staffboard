@@ -1,15 +1,11 @@
 import { useState } from "react";
-import type { Employee } from "@/types/common";
-import { employmentStatuses, contractTypes, departments,
-  roles } from "@/data/lookups";
-
-export type EmployeeFormData = Omit<Employee, "id">;
-
-interface EmployeeFormProps {
-  initialValues: EmployeeFormData;
-  onSubmit: (data: EmployeeFormData) => void;
-  onCancel: () => void;
-}
+import type { EmployeeFormData, EmployeeFormProps } from "../types";
+import {
+  employmentStatuses,
+  contractTypes,
+  departments,
+  roles,
+} from "@/data/lookups";
 
 export const EmployeeForm: React.FC<EmployeeFormProps> = ({
   initialValues,
