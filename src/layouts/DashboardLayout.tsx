@@ -1,5 +1,5 @@
 import { Sidebar } from "./Sidebar";
-import { sidebarItems } from "@/data/sidebarItems";
+import { sidebarItems } from "@/data/lookups";
 import type { DashboardLayoutProps } from "./types";
 
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
