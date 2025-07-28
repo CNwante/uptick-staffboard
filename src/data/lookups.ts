@@ -1,3 +1,4 @@
+import type { SidebarItem } from "@/layouts/types";
 import type {
   Department,
   Role,
@@ -50,3 +51,8 @@ export const statusOptions = employmentStatuses.map((status) => ({
   label: status.charAt(0).toUpperCase() + status.slice(1),
   value: status,
 }));
+
+export const sidebarItems:SidebarItem[] = [
+  { label: "Dashboard", path: "/" },
+  { label: "Employees", path: "/employees" },
+];
