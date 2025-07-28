@@ -147,7 +147,7 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = ({
           <input
             type="tel"
             placeholder="Emergency Contact Phone"
-            value={form.emergencyContact.name}
+            value={form.emergencyContact.phone}
             onChange={(e) => handleEmergencyChange("phone", e.target.value)}
             className="border rounded px-3 py-2 w-full"
           />
