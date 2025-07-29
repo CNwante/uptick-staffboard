@@ -70,7 +70,7 @@ export function EmployeeStats({ employees }: EmployeeStatsProps) {
                 fill="#8884d8"
                 label
               >
-                {departmentData.map((entry, index) => (
+                {departmentData.map((_entry, index) => (
                   <Cell
                     key={`cell-${index}`}
                     fill={COLORS[index % COLORS.length]}
@@ -94,7 +94,7 @@ export function EmployeeStats({ employees }: EmployeeStatsProps) {
                 fill="#82ca9d"
                 label
               >
-                {statusData.map((entry, index) => (
+                {statusData.map((_entry, index) => (
                   <Cell
                     key={`cell-${index}`}
                     fill={COLORS[index % COLORS.length]}
