@@ -10,9 +10,10 @@ import { AddEmployeeModal } from "@/features/employees/components/AddEmployeeMod
 import { EditEmployeeModal } from "@/features/employees/components/EditEmployeeModal";
 import { employmentStatuses, contractTypes, roles, departments } from "@/data/lookups";
 import type { Employee, Department, Role, ContractType, EmploymentStatus } from "@/types/common";
+import { useLocalStorageState } from "@/hooks/useLocalStorageState";
 
 export const EmployeesPage = () => {
-  const [employeeList, setEmployeeList] = useState<Employee[]>(initialEmployees)
+  const [employeeList, setEmployeeList] = useLocalStorageState<Employee[]>("employeeList", initialEmployees)
   const [search, setSearch] = useState<string>("");
   const [department, setDepartment] = useState<Department | string>("");
   const [role, setRole] = useState<Role | string>("");
