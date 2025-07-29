@@ -16,3 +16,7 @@ export interface AddEmployeeModalProps {
   onClose: () => void;
   onSave: (data: EmployeeFormData) => void;
 }
+
+export interface EmployeeStatsProps {
+  employees: Employee[];
+}
