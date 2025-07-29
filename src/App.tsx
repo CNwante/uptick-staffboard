@@ -1,9 +1,13 @@
-import {EmployeesPage} from "./pages/EmployeesPage";
+import { Routes, Route } from "react-router-dom";
+import { EmployeesPage } from "./pages/EmployeesPage";
 
 function App() {
   return (
     <main>
-     <EmployeesPage />
+      <Routes>
+        {/* <Route path="/" element={<DashboardPage />} /> */}
+        <Route path="/employees" element={<EmployeesPage />} />
+      </Routes>
     </main>
   );
 }
