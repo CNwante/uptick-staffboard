@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { employees as initialEmployees } from "@/data/employees";
 import { DashboardLayout } from "@/layouts/DashboardLayout";
@@ -11,6 +10,8 @@ import { EditEmployeeModal } from "@/features/employees/components/EditEmployeeM
 import { employmentStatuses, contractTypes, roles, departments } from "@/data/lookups";
 import type { Employee, Department, Role, ContractType, EmploymentStatus } from "@/types/common";
 import { useLocalStorageState } from "@/hooks/useLocalStorageState";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 export const EmployeesPage = () => {
   const [employeeList, setEmployeeList] = useLocalStorageState<Employee[]>("employeeList", initialEmployees)
@@ -56,7 +57,8 @@ export const EmployeesPage = () => {
 
   const handleEdit = (updated: Omit<Employee, "id">) => {
     if (!editEmployee) return;
-    setEmployeeList((prev) => prev.map((emp) => (emp.id === editEmployee.id ? { ...emp, ...updated} : emp))
+    setEmployeeList((prev) =>
+      prev.map((emp) => (emp.id === editEmployee.id ? { ...emp, ...updated} : emp))
     );
     setEditEmployee(null);
   }
@@ -69,17 +71,24 @@ export const EmployeesPage = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex justify-between items-center mb-4">
+      <div className="mb-4 w-full">
         <div className="flex flex-wrap gap-4 mb-4">
-          <SearchBar value={search} onChange={setSearch} />
-          <Button onClick={() => setAddEmployee(true)}>+ Add Employee</Button>
+          <div className="flex justify-between items-baseline w-full gap-4">
+            <SearchBar value={search} onChange={setSearch} />
+            <Button onClick={() => setAddEmployee(true)}>
+              <span className="sm:hidden"><FontAwesomeIcon icon={faUserPlus}/></span>
+              <span className="hidden sm:block font-bold">+ Add Employee</span>
+            </Button>
+          </div>
+
           <button
-            className="sm:hidden bg-gray-200 px-3 py-2 rounded"
+            className="sm:hidden flex items-center justify-center bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors"
             onClick={() => setFilters(true)}
           >
-            Filters
+            <FontAwesomeIcon icon={faFilter} className="w-5 h-5 text-gray-700" /> Filter
           </button>
-          <div className="hidden sm:flex gap-4">
+
+          <div className="hidden sm:flex gap-4 justify-end w-full my-4">
             <FilterDropdown
               label={"Department"}
               options={departments}
@@ -105,10 +114,11 @@ export const EmployeesPage = () => {
               onChange={setContractType}
             />
           </div>
+
           {filters && (
-            <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-50">
-              <div className="bg-white rounded-lg p-6 w-80">
-                <h2 className="text-lg font-bold mb-4">Filters</h2>
+            <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+              <div className="bg-white rounded-xl shadow-lg p-6 w-80 max-w-sm">
+                <h2 className="text-lg font-semibold mb-4">Filters</h2>
                 <div className="space-y-4">
                   <FilterDropdown
                     label="Department"
@@ -137,7 +147,7 @@ export const EmployeesPage = () => {
                 </div>
                 <div className="flex justify-end mt-6">
                   <button
-                    className="bg-blue-600 text-white px-4 py-2 rounded"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
                     onClick={() => setFilters(false)}
                   >
                     Apply
@@ -148,25 +158,33 @@ export const EmployeesPage = () => {
           )}
         </div>
       </div>
+
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filteredEmployees.map((emp) => (
-          <EmployeeCard key={emp.id} employee={emp} onEdit={(id) => {
-            const found = employeeList.find((e) => e.id === id);
-            if (found) setEditEmployee(found);
-          }}
-          onDelete={handleDelete}
+          <EmployeeCard
+            key={emp.id}
+            employee={emp}
+            onEdit={(id) => {
+              const found = employeeList.find((e) => e.id === id);
+              if (found) setEditEmployee(found);
+            }}
+            onDelete={handleDelete}
           />
         ))}
       </div>
 
       {addEmployee && (
-        <AddEmployeeModal onClose={() => setAddEmployee(false)}
-        onSave={handleAdd}/>
+        <AddEmployeeModal
+          onClose={() => setAddEmployee(false)}
+          onSave={handleAdd}
+        />
       )}
 
       {editEmployee && (
-        <EditEmployeeModal employee={editEmployee} onClose={() => setEditEmployee(null)}
-        onSave={handleEdit}
+        <EditEmployeeModal
+          employee={editEmployee}
+          onClose={() => setEditEmployee(null)}
+          onSave={handleEdit}
         />
       )}
     </DashboardLayout>
