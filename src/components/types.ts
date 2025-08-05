@@ -12,7 +12,7 @@ export interface SearchBarProps {
 
 export interface FilterDropdownProps {
   label: string;
-  options: readonly string[];
+  options: string[];
   value: string;
   onChange: (value: string) => void;
 }
