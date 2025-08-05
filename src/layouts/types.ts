@@ -1,3 +1,5 @@
+import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+
 export interface DashboardLayoutProps {
   children: React.ReactNode;
 }
@@ -5,7 +7,7 @@ export interface DashboardLayoutProps {
 export interface SidebarItem {
   label: string;
   path: string;
-  icon?: React.ReactNode;
+  icon?: IconDefinition;
 }
 
 export interface SidebarProps {

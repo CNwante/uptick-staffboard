@@ -23,8 +23,8 @@ export const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({
   onSave,
 }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-lg">
+    <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+      <div className="bg-white rounded-lg p-6 w-[95%] max-w-lg h-[95%] overflow-auto">
         <h2 className="text-lg font-bold mb-4">Add New Employee</h2>
         <EmployeeForm
           initialValues={employeeFormData}

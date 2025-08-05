@@ -1,3 +1,4 @@
+import { faHome, faUsers, faCog } from "@fortawesome/free-solid-svg-icons";
 import type { SidebarItem } from "@/layouts/types";
 import type {
   Department,
@@ -53,6 +54,7 @@ export const statusOptions = employmentStatuses.map((status) => ({
 }));
 
 export const sidebarItems:SidebarItem[] = [
-  { label: "Dashboard", path: "/" },
-  { label: "Employees", path: "/employees" },
+  { label: "Dashboard", path: "/", icon: faHome  },
+  { label: "Employees", path: "/employees", icon: faUsers },
+  { label: "Settings", path: "/settings", icon: faCog },
 ];

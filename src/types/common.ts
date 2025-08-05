@@ -42,3 +42,17 @@ export interface Employee {
   };
   profilePhoto?: string;
 }
+
+export interface SettingsData {
+  companyName: string;
+  address: string;
+  contactEmail: string;
+  logo?: string;
+  theme: "light" | "dark";
+  notifications: boolean;
+}
+
+export interface SettingsPageProps {
+  initialValues: SettingsData;
+  onSubmit: (data: SettingsData) => void;
+}

@@ -1,34 +1,9 @@
 @import "tailwindcss";
 
-@theme {
-  --color-lime-0: #EDFF8166;
-  --color-lime-1: #D6FF7E;
-  --color-lime-2: #98AA28;
-  --color-lime-3: #A3B938;
-  --color-green-0: #F6FBF9;
-  --color-green-10: #253E32;
-  --color-gray-1: #78847D;
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-@layer utilities {
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
+@layer components {
+  .input-field {
+    @apply w-full border border-gray-300 rounded-lg px-3 py-2
+           focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+           outline-none transition;
   }
-}
-
-.l2_heading {
-  @apply max-w-[490px] text-[42px] font-bold text-green-10;
-}
-
-.l3_heading {
-  @apply text-lg text-green-10 font-semibold my-4;
-}
-
-.description {
-  @apply max-w-[360px] my-8 text-[22px] text-gray-1;
 }
