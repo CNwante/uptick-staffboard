@@ -18,11 +18,16 @@ export type Role =
   | "Marketing Specialist"
   | "Sales Executive"
   | "Customer Support Agent"
-  | "Legal Advisor"
+  | "Legal Advisor";
 
 export type ContractType = "permanent" | "contract" | "intern";
 
 export type EmploymentStatus = "active" | "inactive" | "probation";
+
+export type Contact = {
+  name: string;
+  phone: string;
+};
 
 export interface Employee {
   id: string;
@@ -36,23 +41,6 @@ export interface Employee {
   contractType: ContractType;
   hireDate: string;
   status: EmploymentStatus;
-  emergencyContact: {
-    name: string;
-    phone: string;
-  };
+  emergencyContact: Contact;
   profilePhoto?: string;
-}
-
-export interface SettingsData {
-  companyName: string;
-  address: string;
-  contactEmail: string;
-  logo?: string;
-  theme: "light" | "dark";
-  notifications: boolean;
-}
-
-export interface SettingsPageProps {
-  initialValues: SettingsData;
-  onSubmit: (data: SettingsData) => void;
 }
